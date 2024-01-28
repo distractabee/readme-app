@@ -13,8 +13,55 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 
 const generateMarkdown = (userInput) => {
-  const { name, bio, linkedInUrl, githubUrl } = userInput;
-  const outputMarkdown = ``;
+  const { title, description, installation, usage, collaborators, contribute, test, githubUrl, email } = userInput;
+  const outputMarkdown = `# ${title}
+
+  ## Description
+  
+${description}
+  
+  ## Table of Contents
+  
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [How to Contribute](#contribute)
+  - [Tests](#test)
+  - [Contact](#contact)
+  - [License](#license)
+  
+  ## Installation
+  
+  ${installation}
+  
+  ## Usage
+
+  ${usage}
+
+  ## Credits
+  
+  ${collaborators}
+
+  ## Contribute
+
+  ${contribute}
+
+  ## Test
+
+  ${test}
+
+  ## Contact
+
+  [${githubUrl}](https://www.github.com/${githubUrl})
+  <${email}>
+  
+  ## License
+  
+
+  ## Badges
+  
+  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+`
 
   return outputMarkdown;
 }

@@ -51,6 +51,16 @@ const questions =
                 name: "email",
                 type: "input"
             },
+            {
+                message: "How can someone contribute to your project?",
+                name: "contribute",
+                type: "input"
+            },
+            {
+                message: "How can someone test your application?",
+                name: "test",
+                type: "input"
+            },
         ];
 
 
