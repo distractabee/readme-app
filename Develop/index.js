@@ -32,7 +32,7 @@ const questions =
                 type: "list",
                 choices: [
                     "MIT",
-                    "GNU GPlv3",
+                    "GNU GPL v3",
                     "Apache License 2.0",
                     "ISC",
                 ]
