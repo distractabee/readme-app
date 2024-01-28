@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require("./utils/generateMarkdown.js")
 
 //collect user input
 const questions = 
@@ -64,21 +65,25 @@ const questions =
         ];
 
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-     const fileContents = generateHtml(answers);
-        const { title } = answers;
-        const fileName = title.toLowerCase().replace(" ", "-");
-        console.log("Answers: ", answers);
-        fs.writeFile(
-            `${fileName}.md`,
-            JSON.stringify(answers, null, 4),
-            (err) => err ? console.error(err) : console.log("Success!")
-            );
-}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer
+        .prompt(questions)
+        .then((answers) => 
+        {
+            const fileContents = generateMarkdown(answers);
+            const { title } = answers;
+            const fileName = title.toLowerCase().replace(" ", "-");
+            console.log("Answers: ", questions);
+            fs.writeFile(
+                `${fileName}.md`,
+                JSON.stringify(answers, null, 4),
+                (err) => err ? console.error(err) : console.log("Success!")
+                );
+        }
+        )
+}
 
 // Function call to initialize app
 init();
