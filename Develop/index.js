@@ -70,20 +70,22 @@ const questions =
 function init() {
     inquirer
         .prompt(questions)
-        .then((answers) => 
-        {
+          .then((answers) => {
+            // write the output
             const fileContents = generateMarkdown(answers);
             const { title } = answers;
+
+
             const fileName = title.toLowerCase().replace(" ", "-");
-            console.log("Answers: ", questions);
-            fs.writeFile(
-                `${fileName}.md`,
-                JSON.stringify(answers, null, 4),
-                (err) => err ? console.error(err) : console.log("Success!")
-                );
-        }
-        )
-}
+            fs.writeFile(`${fileName}.md`, fileContents, (err) => {
+              if (err) {
+                console.error("Error writing file:", err);
+              } else {
+                console.log("Success!");
+              }
+            });
+          });
+        };
 
 // Function call to initialize app
 init();
