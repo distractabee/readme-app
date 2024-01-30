@@ -3,6 +3,14 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require("./utils/generateMarkdown.js")
 
+// license options
+const licenseOptions = [
+    "MIT",
+    "GNU GPL v3",
+    "Apache License 2.0",
+    "ISC",
+];
+
 //collect user input
 const questions = 
         [
@@ -30,12 +38,7 @@ const questions =
                 message: "What license would you like to use for your application?",
                 name: "license",
                 type: "list",
-                choices: [
-                    "MIT",
-                    "GNU GPL v3",
-                    "Apache License 2.0",
-                    "ISC",
-                ]
+                choices: licenseOptions
             },
             {
                 message: "List your collaborators",
@@ -74,7 +77,6 @@ function init() {
             // write the output
             const fileContents = generateMarkdown(answers);
             const { title } = answers;
-
 
             const fileName = title.toLowerCase().replace(" ", "-");
             fs.writeFile(`${fileName}.md`, fileContents, (err) => {
