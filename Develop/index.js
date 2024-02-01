@@ -9,6 +9,7 @@ const licenseOptions = [
     "GNU GPL v3",
     "Apache License 2.0",
     "ISC",
+    "none"
 ];
 
 //collect user input

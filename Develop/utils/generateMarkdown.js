@@ -1,53 +1,37 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// This function renders a license badge depending on user input
 function renderLicenseBadge(license) {
   const badgeOptionsObj = {
     "MIT": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-    "GNU GPL v3": "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
-    "Apache License 2.0": "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)",
-    "ISC": "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+    "GNU GPL v3": "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",    
+    "Apache License 2.0": "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
+    "ISC": "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)",
+    "none" : "",
   }
 
   const licenseOutput = badgeOptionsObj[license];
 
   return licenseOutput;
-  // const mitBadge = ["[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"];
-  // const gnuBadge = ["[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"];
-  // const iscBadge = ["[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)"];
-  // const apacheBadge = ["[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"];
-  // const licenseBadge = [" "];
-
-  // if (questions.license.choices[0]) {
-  //   licenseBadge = mitBadge;
-  // } else if (questions.license.choices[1]) {
-  //   licenseBadge = gnuBadge;
-  // } else if (questions.license.choices[2]) {
-  //   licenseBadge = apacheBadge;
-  // } else if (questions.license.choices[3]) {
-  //   licenseBadge = iscBadge
-  // }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// this function returns the license link selected by the user
 function renderLicenseLink(license) {
-  const mitLink = [""];
-  const gnuLink = [""];
-  const apacheLink = [""];
-  const iscLink = [""];
+  const licenseOptionsLink = {
+    "MIT": "[License: MIT](https://opensource.org/licenses/MIT)",
+    "GNU GPL v3": "[License: GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0)",
+    "ISC": "[License: ISC](https://opensource.org/licenses/ISC)",
+    "Apache License 2.0": "[License: Apache 2.0](https://opensource.org/licenses/Apache-2.0)",
+    "none" : "",
+  }
+    const licenseLinkOutput = licenseOptionsLink[license];
+    return licenseLinkOutput;
+  }
 
 
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
-
+// This function combines the user input from the index with the license badge and link functions to generate the README file
 const generateMarkdown = (userInput) => {
   const { title, description, installation, usage, collaborators, contribute, test, githubUrl, email, license } = userInput;
   const licenseBadgeMarkdown = renderLicenseBadge(license);
+  const licenseLinkMarkdown = renderLicenseLink(license);
   const outputMarkdown = `# ${title} ${licenseBadgeMarkdown}
 
   ## Description
@@ -92,10 +76,7 @@ ${description}
   
   ## License
   
-
-  ## Badges
-  
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+  ${licenseLinkMarkdown}
 `
 
   return outputMarkdown;
